@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- META-TAGS -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- LINKS -->
+
+    <!-- Google Fonts -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+
+    <!-- Eksternt stylesheet  -->
+    <link rel="stylesheet" href="css/general-style.css">
+    <link rel="stylesheet" href="css/left-sidebar.css">
+    <link rel="stylesheet" href="css/pip-feed.css">
+    <link rel="stylesheet" href="css/right-sidebar.css">
+    <link rel="stylesheet" href="css/modalbox_2.css">
+
+   <!-- Fontawesome -->
+    <script src="https://kit.fontawesome.com/b78a89f658.js" crossorigin="anonymous"></script>
+
+    <!--Link til js-->
+    <title>Pipper</title>
+</head>
+
+<!-- BODY -->
+
+<body>
+
+    <!-- VENSTRE SIDEBAR MENU -->
+    <div class="sidenav_venstre">
+        <img src="pictures/image_logo.png" alt="logo" id="logo"> <!-- Logo -->
+        <a href="#"><span class="material-symbols-outlined">home</span id="menu">Hjem</a>
+        <!-- menu punkt + ikon-->
+
+        <a href="#"><span class="material-symbols-outlined">tag</span id="menu">Udforsk</a>
+        <!-- menu punkt + ikon-->
+
+        <a href="#"><span class="material-symbols-outlined">notifications</span id="menu">Notifikationer</a>
+        <!-- menu punkt + ikon-->
+
+        <a href="#"><span class="material-symbols-outlined">mail</span id="menu">Beskeder</a>
+        <!-- menu punkt + ikon-->
+
+        <a href="#"><span class="material-symbols-outlined">bookmark</span id="menu">Bogmærker</a>
+        <!-- menu punkt + ikon-->
+
+        <a href="#"><span class="material-symbols-outlined">ballot</span id="menu">Liste</a>
+        <!-- menu punkt + ikon-->
+
+        <a href="#"><span class="material-symbols-outlined">person_filled</span id="menu">Profil</a>
+        <!-- menu punkt + ikon-->
+
+        <a href="#"><span class="material-symbols-outlined">more</span id="menu">Mere</a>
+        <!-- menu punkt + ikon-->
+
+
+        <!-- MODAL-BOX - popup box-->
+        <!-- Trigger/Open The Modal - knap til popup box-->
+        <button id="writePipButton">Skriv pip</button>
+    </div>
+
+    <!-- THE MODAL - popup box -->
+    <div id="myModal" class="modal">
+        <form id="note-form">
+            
+            <!--Kryds til at lukke modal box-->
+            <span class="close">&times;</span>
+            
+            <!-- Besked i modal-box -->
+            <h2>Hvad har du på hjertet?</h2>
+
+            <!-- Input til brugernavn - når modalbox er åben -->
+            <div class="1">
+                <input id="indtast_brugernavn" type="text" placeholder="Indtast brugernavn">
+            </div>
+
+            <!-- Input til pip - når modalbox er åben -->
+            <div class="2">
+                <textarea id="indtast_pip" cols="30" rows="10" placeholder="Indtast pip"></textarea>
+                <div class="characterCount"><h5 id="charac-count">0</h5><h5>/255</h5></div>
+            </div>
+
+            <!-- Pip knap - når modalbox er åben -->
+            <div class="3">
+                <input id="button_pip" type="submit" value="Pip">
+            </div>
+
+        </form>
+    </div>
+
+
+
+    <!-- PIP-FEED - midten af siden -->
+
+    <div class="container">
+        <!-- HUSK AT SÆTTE DET ÆNDREDE HTML IND I "READPIPS" -->
+        
+        <h1>Velkommen til Pipper!</h1>
+
+        <!-- Dropdown -->
+
+
+        <div id="update_myModal" class="update_modal">
+            <form id="update_note-form">
+                
+                <!--Kryds til at lukke modal box-->
+                <span class="update_close">&times;</span>
+                
+                <!-- Besked i modal-box -->
+                <h2>Redigering af dit pip</h2>
+    
+                <!-- Input til brugernavn - når modalbox er åben -->
+                <div class="update_1">
+                    <input id="update_indtast_brugernavn" type="text" placeholder="Indtast brugernavn">
+                </div>
+    
+                <!-- Input til pip - når modalbox er åben -->
+                <div class="update_2">
+                    <textarea id="update_indtast_pip" cols="30" rows="10" placeholder="Indtast pip"></textarea>
+                    <div class="characterCount"><h5 id="update_charac-count">0</h5><h5>/255</h5></div>
+                </div>
+    
+                <!-- Pip knap - når modalbox er åben -->
+                <div class="update_3">
+                    <input id="update_button_pip" type="submit" value="Pip">
+                </div>
+    
+            </form>
+        </div>
+</div>
+
+
+    </div>
+
+
+
+
+
+    <!-- HØJRE SIDEBAR MED TRENDS -->
+    <div class="sidenav_hoejre">
+        <!-- Søgefunktion til siden (VIRKER IKKE BEVIDST) -->
+        <div class="soegefunktion">
+            <input type="text" placeholder="Search pips.." id="search">
+        </div>
+
+
+        <!-- Populære pips ligger her - højre navbar -->
+        <div class="populaere_pips">
+            <h1>Populære pips</h1>
+            <div class="tranding">
+                <div class="big_tags">
+                    <div class="kategori">
+                        <p>Trender i Danmark</p>
+                        <!--Lille overskrift-->
+                    </div>
+                    <div class="symbol"><span class="material-symbols-outlined" id="symbol1">more_horiz </span></div>
+                    <!--Prikker i siden-->
+                </div>
+                <a class="tags" href="#">
+                    <h3>#QueenElizabeth</h3>
+                    <!--Tag-->
+                </a>
+                <p class="views">4,13M pips</p>
+                <!--Hvor mange der har set dette pip-->
+            </div>
+
+            <div class="tranding">
+                <div class="big_tags">
+                    <div class="kategori">
+                        <p>Teknologi i Danmark</p>
+                        <!--Lille overskrift-->
+                    </div>
+                    <div class="symbol"><span class="material-symbols-outlined" id="symbol2">more_horiz </span></div>
+                    <!--Prikker i siden-->
+                </div>
+                <a class="tags" href="#">
+                    <h3>#iPhone14</h3>
+                    <!--Tag-->
+                </a>
+                <p class="views">1,29M pips</p>
+                <!--Hvor mange der har set dette pip-->
+            </div>
+            <br>
+            <div class="tranding">
+                <div class="big_tags">
+                    <div class="kategori">
+                        <p>Verden</p>
+                        <!--Lille overskrift-->
+                    </div>
+                    <div class="symbol"><span class="material-symbols-outlined" id="symbol3">more_horiz </span></div>
+                    <!--Prikker i siden-->
+                </div>
+                <a class="tags" href="#">
+                    <h3>#Ukraine</h3>
+                    <!--Tag-->
+                </a>
+                <p class="views">2,79M pips</p>
+                <!--Hvor mange der har set dette pip-->
+            </div>
+        </div>
+
+
+        <!-- Folk du vil synes om - højre navbar -->
+        <div class="foelg">
+            <h1>Folk du vil synes om</h1>
+        </div>
+
+        <div class="row">
+            <div class="column">
+                <img src="pictures/cecilie.jpg" alt="billede" id="billede_person"> 
+                    <!-- Lille billede af brugeren-->
+            </div>
+            <div class="column">
+                 <!-- Navn og brugernavn på brugeren-->
+                <p id="navn">Cecilie Valija Ulrich</p>
+                <p id="brugernavn">@Cecilie89756472</p>
+            </div>
+            <div class="column">
+                <button id="foelg_knap">Følg</button>
+                <!-- Følg knap -->
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="column">
+                <img src="pictures/emilie.jpg" alt="billede" id="billede_person">
+                 <!-- Lille billede af brugeren-->
+            </div>
+            <div class="column">
+                 <!-- Navn og brugernavn på brugeren-->
+                <p id="navn">Emilie L. Hansen</p>
+                <p id="brugernavn">@Emilie92756354</p>
+            </div>
+            <div class="column">
+                <button id="foelg_knap">Følg</button>
+                 <!-- Følg knap -->
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="column">
+                <img src="pictures/sebastian.jpg" alt="billede" id="billede_person">
+                    <!-- Lille billede af brugeren-->
+            </div>
+            <div class="column">
+                 <!-- Navn og brugernavn på brugeren-->
+                <p id="navn">Sebastian Christensen</p>
+                <p id="brugernavn">@Sebastian354879</p>
+            </div>
+            <div class="column">
+                <button id="foelg_knap">Følg</button>
+                 <!-- Følg knap -->
+            </div>
+        </div>
+        <div class="row">
+            <div class="column">
+                <img src="pictures/denitsa.jpg" alt="billede" id="billede_person">
+                    <!-- Lille billede af brugeren-->
+            </div>
+            <div class="column">
+                 <!-- Navn og brugernavn på brugeren-->
+                <p id="navn">Denitsa V. Deshkova</p>
+                <p id="brugernavn">@Denitsa89756472</p>
+            </div>
+            <div class="column">
+                <button id="foelg_knap">Følg</button>
+                 <!-- Følg knap -->
+            </div>
+        </div>
+        <footer>.</footer>
+
+
+        <!-- Link til script -->
+        <script src="js/modalbox.js"></script>
+        <script src="js/readpips.js"></script>
+        <script src="js/makepips.js"></script>
+        <script src="js/dropdownmenu.js"></script>
+        <script src="js/update.js"></script>
+
+
+</body>
+
+</html>

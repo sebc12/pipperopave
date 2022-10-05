@@ -1,0 +1,9 @@
+/* 
+Her tænker jeg hvis man har noget generel styling for siden, kan man skrive det her.
+Det kan feks være skrifttype, H1, H2, p, button-style osv
+*/
+
+body{
+    background-color: #cccfca;
+    font-family: Arial, Helvetica, sans-serif;
+    }

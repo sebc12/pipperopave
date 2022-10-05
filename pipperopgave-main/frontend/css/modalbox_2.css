@@ -1,0 +1,97 @@
+#update_PipButton {
+    margin-top: 30px;
+    margin-left: 15px;
+    padding: 7px 12px;
+    background-color: #9DBB8F;
+    border: none;
+    border-radius: 20px;
+    font-size: 18px;
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+}
+
+
+/* MODAL BOX */
+/* input brugernavn - modal box */
+#update_indtast_brugernavn {
+    margin-bottom: 10px;
+    border-radius: 7px;
+    border: none;
+    padding: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+ 
+/* input pip - modal box */
+#update_indtast_pip {
+    width: 500px;
+    height: 100px;
+    border-radius: 7px;
+    padding: 5px;
+    border: none;
+    font-family: Arial, Helvetica, sans-serif;
+}
+ 
+/* knap pip - modal box */
+#update_button_pip {
+    background-color: #9DBB8F;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    padding: 5px 12px;
+    border-radius: 20px;
+    margin-top: 10px;
+    border: none;
+    -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+}
+
+.update_modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    padding-top: 100px; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+  }
+  
+  /* The Close Button */
+  .update_close {
+    color: black;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    margin-top: -25px;
+    margin-right: -15px;
+  }
+  
+  .update_close:hover,
+  .update_close:focus {
+    color: #9DBB8F;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  /* Indhold i modal box */
+#update_note-form{
+    /* padding-left: 550px; */
+        position: absolute;
+        left: 40%; /*skal rettes fra 50% til 40%*/
+        top: 50%;
+        transform: translate(-50%, -50%);
+        border: black 2px solid;
+        padding-top: 30px;
+        padding-bottom: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+        background-color:#A2A89F;
+        -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.5);
+        -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+}
+
+/* Charactercount så tallene står ved siden af hinanden */
+.update_characterCount{
+    display: flex;
+}
