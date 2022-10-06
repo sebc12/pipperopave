@@ -17,7 +17,6 @@ function openDropdown(index, username, pipmessage) {
  // Når brugeren klikker på knappen, åbnes modal boxen
  btn.onclick = function() {
    update_modal.style.display = "block";
-   console.log("hej fra update form")
    document.querySelector("#update_indtast_brugernavn").value = username;
    document.querySelector("#update_indtast_pip").value = pipmessage;
 
@@ -84,32 +83,28 @@ form.addEventListener("submit", (event) => {
    }
  }
 
+// DELETE PIP 
 
+// Henter id fra vores knap
+var deletebtn = document.getElementById("delete" + index);
 
-/* const pip = {
-  username: document.querySelector("#update_indtast_brugernavn" + index).value,
-  pip: document.querySelector("#update_indtast_pip" + index).value,
+// Funktionen der skal køre når vi klikker på knappen
+deletebtn.onclick = function() {
 
+  // Den skal bruge ID'et så den ved hvilket id den skal bruge til at slette
+    const id = index;
+    console.log("ID vi vil slette " + id)
+    const asObject = {
+      pipID: id
+    };
+
+  fetch("http://localhost:8000", {
+        method: "DELETE",
+    body: JSON.stringify(asObject)
+})
 };
 
-const id = document.querySelector("#update_note-form").innerHTML;
-const response = await putData(id, pip);
-if (response.status === 200) {
-  pip.id = id;
-  const newNode = createContactElement(pip);
-  const oldNode = document.querySelector("#" + id)
-  oldNode.parentNode.replaceChild(newNode, oldNode);
-} */
 }
-
-
-/*function clearUpdateForm() {
-  document.querySelector("#update_indtast_brugernavn").value = "";
-  document.querySelector("#update_indtast_pip").value = "";
-
-}*/
-
-
 
 
 // Close the dropdown menu if the user clicks outside of it
@@ -125,9 +120,3 @@ window.onclick = function(event) {
     }
   }
 }
-
-
-
-
-
-
