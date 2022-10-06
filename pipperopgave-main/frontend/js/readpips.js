@@ -45,7 +45,7 @@ async function readPip() {
         <div class ="pip-boks">
         
         <div class="dropdown">
-        <button onclick="openDropdown('${pip.pipID}', '${pip.username}', '${pip.pipmessage}')" class="dropbtn">Knap</button>
+        <button onclick="openDropdown('${pip.pipID}', '${pip.username}', '${pip.pipmessage}')" class="dropbtn"><span class="material-symbols-outlined">more_horiz </span></button>
 
         <div id="myDropdown${pip.pipID}" class="dropdown-content">
           <a id="rediger${pip.pipID}" type="submit" href="#">Rediger pip</a>
