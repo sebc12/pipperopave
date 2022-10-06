@@ -20,7 +20,7 @@ $servername = "localhost:3306";
 $username = "root";
 
 // Dit password som du henter fra .env filen
-$password = 'Schristensen11';
+$password = '';
 
 $requestType = $_SERVER["REQUEST_METHOD"];
 
