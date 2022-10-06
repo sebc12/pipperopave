@@ -49,7 +49,7 @@ async function readPip() {
 
         <div id="myDropdown${pip.pipID}" class="dropdown-content">
           <a id="rediger${pip.pipID}" type="submit" href="#">Rediger pip</a>
-          <a href="#">Slet pip</a>
+          <a id="delete${pip.pipID}"href="#">Slet pip</a>
         </div>
       </div>
         <div class="bruger">
