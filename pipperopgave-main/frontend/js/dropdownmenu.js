@@ -1,6 +1,7 @@
 /* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
 function openDropdown(index, username, pipmessage) {
+  console.log(index)
   document.getElementById("myDropdown" + index).classList.toggle("show");
 
 
@@ -17,8 +18,39 @@ function openDropdown(index, username, pipmessage) {
  btn.onclick = function() {
    update_modal.style.display = "block";
    console.log("hej fra update form")
-   document.querySelector("#update_indtast_brugernavn").value = "username";
-   document.querySelector("#update_indtast_pip").value = "pipmessage";
+   document.querySelector("#update_indtast_brugernavn").value = username;
+   document.querySelector("#update_indtast_pip").value = pipmessage;
+
+
+   //START
+
+// Get the Form element from our the DOM.
+const form = document.querySelector("#update_note-form");
+
+// Add an event listener on the form, listening for the "submit" event
+form.addEventListener("submit", (event) => {
+  // We prevent the default behaviour of the form, so it doesnt reload the page.
+  event.preventDefault();
+
+  // Get the user input value from the title input
+  // Get the user input value from the note textarea
+
+    const user = document.getElementById("update_indtast_brugernavn").value
+    const pip = document.getElementById("update_indtast_pip").value
+    const id = index;
+    console.log(id, user, pip)
+    const asObject = {
+      pipID: id,
+        username: user,
+        pipmessage: pip,
+
+    } 
+
+    fetch("http://localhost:8000", {
+        method: "PUT",
+    body: JSON.stringify(asObject)
+})
+});
 
 
 

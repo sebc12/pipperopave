@@ -75,6 +75,43 @@ if ($requestType === "GET") {
   }
 }
 
+elseif($requestType === "PUT") {
+  $input = (array) json_decode(file_get_contents('php://input'), TRUE);
+  try {
+      $statement = 
+      "
+      UPDATE pips 
+      SET 
+      pipmessage= :pipmessage, 
+      username= :username, 
+      WHERE pipID= :id;
+      ";
+
+    $conn = new PDO("mysql:host=$servername;dbname=pipper-opgave", $username, $password);
+    $statement = $conn->prepare($statement);
+    $statement->execute(array(
+      'id' => $input ['$pipID'],
+      'pip' => $input['pipmessage'],
+      'username' => $input['username']
+    ));
+
+    $id = $conn->lastInsertId();
+    $pip = (object) $input;
+    $pip->id = $id;
+
+    $response['status_code_header'] = 'HTTP/1.1 201 Created';
+    $response['body'] = json_encode($pip);
+    return $response;
+    
+  } 
+  catch (\PDOException $e) {
+    exit($e->getMessage());
+  }
+}
+
+
+
+
 
 elseif($requestType === "DELETE") {
   try {

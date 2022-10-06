@@ -21,6 +21,7 @@ async function readPip() {
 
     // Vi looper hen over hvert array i DB og henter også number med ind.
     pipFromDB.forEach(function (pip, number) {
+        console.log(pip, number)
 
         // Opret en div hvori du indsætter dine pip-værdier
         // Vores objekt ser sådan ud:
@@ -44,15 +45,16 @@ async function readPip() {
         <div class ="pip-boks">
         
         <div class="dropdown">
-        <button onclick="openDropdown(${pip.pipID})" class="dropbtn">Knap</button>
+        <button onclick="openDropdown('${pip.pipID}', '${pip.username}', '${pip.pipmessage}')" class="dropbtn">Knap</button>
 
         <div id="myDropdown${pip.pipID}" class="dropdown-content">
           <a id="rediger${pip.pipID}" type="submit" href="#">Rediger pip</a>
           <a href="#">Slet pip</a>
         </div>
       </div>
-
         <div class="bruger">
+        
+
             <div class="avatar"><img src="${avatar}"
                     alt="billede" id="billede_avatar"></div>
 
