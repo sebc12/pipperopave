@@ -20,14 +20,9 @@ $servername = "localhost:3306";
 $username = "root";
 
 // Dit password som du henter fra .env filen
-$password = '';
+$password = 'Bella1234';
 
 $requestType = $_SERVER["REQUEST_METHOD"];
-
-
-$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-$uri = explode( '/', $uri );
-$pipID = (string) $uri[1];
 
 
 
@@ -43,7 +38,7 @@ if ($requestType === "GET") {
   } catch (PDOException $e) {
     echo "Connection failed: " . $e->getMessage();
   }
-} elseif ($requestType === "POST") {
+} if ($requestType === "POST") {
   $input = (array) json_decode(file_get_contents('php://input'), TRUE);
   try {
       $statement = 
@@ -75,33 +70,36 @@ if ($requestType === "GET") {
   }
 }
 
-elseif($requestType === "PUT") {
-  $input = (array) json_decode(file_get_contents('php://input'), TRUE);
-  try {
-      $statement = 
-      "
-      UPDATE pips 
+if($requestType === "PUT") {
+   $updateinput = (array) json_decode(file_get_contents('php://input'), TRUE);
+  
+   $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+   $uri = explode( '/', $uri );
+   $pipID = (string) $uri[1];
+      $update = 
+      "UPDATE pips 
       SET 
       pipmessage= :pipmessage, 
-      username= :username, 
+      username= :username 
       WHERE pipID= :id;
       ";
 
-    $conn = new PDO("mysql:host=$servername;dbname=pipper-opgave", $username, $password);
-    $statement = $conn->prepare($statement);
-    $statement->execute(array(
-      'id' => $input ['$pipID'],
-      'pip' => $input['pipmessage'],
-      'username' => $input['username']
+    try {
+    $updateconn = new PDO("mysql:host=$servername;dbname=pipper-opgave", $username, $password);
+    $update = $updateconn->prepare($update);
+    $update->execute(array(
+      'id' => (int) $updateinput['pipID'],
+      'pipmessage' => $updateinput['pipmessage'],
+      'username' => $updateinput['username']
     ));
 
-    $id = $conn->lastInsertId();
-    $pip = (object) $input;
+    $id = $updateconn->lastInsertId();
+    $pip = (object) $updateinput;
     $pip->id = $id;
 
-    $response['status_code_header'] = 'HTTP/1.1 201 Created';
-    $response['body'] = json_encode($pip);
-    return $response;
+    $updateresponse['status_code_header'] = 'HTTP/1.1 201 Created';
+    $updateresponse['body'] = json_encode($pip);
+    return $updateresponse;
     
   } 
   catch (\PDOException $e) {
@@ -109,33 +107,29 @@ elseif($requestType === "PUT") {
   }
 }
 
-
-
-
-
 elseif($requestType === "DELETE") {
   try {
-    $conn = new PDO("mysql:host=$servername;dbname=pipper-opgave", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $input = (array) json_decode(file_get_contents('php://input'), TRUE);
+    $deleteconn = new PDO("mysql:host=$servername;dbname=pipper-opgave", $username, $password);
+    $deleteconn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $deleteinput = (array) json_decode(file_get_contents('php://input'), TRUE);
     
-
     // sql to delete a record
-    $statement = "DELETE FROM pips WHERE pipID=:'pip'";
+    $deletestatement = 
+    "DELETE FROM pips 
+    WHERE pipID = :pip";
 
-    $statement = $conn->prepare($statement);
-    $statement->execute(array(
-      'pip' => $input['pipID']
+    $deletestatement = $deleteconn->prepare($deletestatement);
+    $deletestatement->execute(array(
+      'pip' => $deleteinput['pipID']
     ));
 
-  
-    $conn->exec($statement);
+    $deleteconn->exec($deletestatement);
     echo "Record deleted successfully";
 
   } catch(PDOException $e) {
     echo $sql . "<br>" . $e->getMessage();
   }
   
-  $conn = null;
+  $deleteconn = null;
 
 }
